@@ -1,0 +1,638 @@
+body
+{
+  margin: 0;
+  padding: 0;
+  
+  /* make it look decent enough */
+  background: black;
+  color: rgb(206, 205, 195);
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  width: 1300px;
+}
+
+#menuToggle
+{
+  display: block;
+  position: relative;
+  top: 50px;
+  left: 50px;
+  
+  z-index: 1;
+  
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+#menuToggle a
+{
+  text-decoration: none;
+  color: rgb(206, 205, 195);
+  
+  transition: color 0.3s ease;
+}
+
+#menuToggle a:hover
+{
+  color: rgb(255, 145, 0);
+}
+
+
+#menuToggle input
+{
+  display: block;
+  width: 40px;
+  height: 32px;
+  position: absolute;
+  top: -7px;
+  left: -5px;
+  
+  cursor: pointer;
+  
+  opacity: 0; /* hide this */
+  z-index: 2; /* and place it over the hamburger */
+  
+  -webkit-touch-callout: none;
+}
+
+/*
+ * Just a quick hamburger
+ */
+#menuToggle span
+{
+  display: block;
+  width: 33px;
+  height: 4px;
+  margin-bottom: 5px;
+  position: relative;
+  
+  background: rgb(206, 205, 195);
+  border-radius: 3px;
+  
+  z-index: 1;
+  
+  transform-origin: 4px 0px;
+  
+  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+              background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+              opacity 0.55s ease;
+}
+
+#menuToggle span:first-child
+{
+  transform-origin: 0% 0%;
+}
+
+#menuToggle span:nth-last-child(2)
+{
+  transform-origin: 0% 100%;
+}
+
+/* 
+ * Transform all the slices of hamburger
+ * into a crossmark.
+ */
+#menuToggle input:checked ~ span
+{
+  opacity: 1;
+  transform: rotate(45deg) translate(-2px, -1px);
+  background: black;
+}
+
+/*
+ * But let's hide the middle one.
+ */
+#menuToggle input:checked ~ span:nth-last-child(3)
+{
+  opacity: 0;
+  transform: rotate(0deg) scale(0.2, 0.2);
+}
+
+/*
+ * Ohyeah and the last one should go the other direction
+ */
+#menuToggle input:checked ~ span:nth-last-child(2)
+{
+  transform: rotate(-45deg) translate(0, -1px);
+}
+
+/*
+ * Make this absolute positioned
+ * at the top left of the screen
+ */
+#menu
+{
+  position: absolute;
+  width: 150px;
+  height: 800px;
+  margin: -100px 0 0 -50px;
+  padding: 50px;
+  padding-top: 125px;
+  
+  background: #b10606;
+  list-style-type: none;
+  -webkit-font-smoothing: antialiased;
+  /* to stop flickering of text in safari */
+  
+  transform-origin: 0% 0%;
+  transform: translate(-100%, 0);
+  
+  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+}
+
+#menu li
+{
+  padding: 10px 0;
+  font-size: 20px;
+}
+
+/*
+ * And let's slide it in from the left
+ */
+#menuToggle input:checked ~ ul
+{
+  transform: none;
+}
+
+.pic1{
+  animation: rtol 2s ease;
+}
+@keyframes rtol{
+  from{
+    margin-top: 100%;
+  }
+  to{
+    margin-top: 0;
+  }
+}
+.pic11{
+  width: 50%;
+position: relative; right: -700px; top: -100px;
+}
+/*
+.canvas1{
+  position: inherit;
+  top: 50%;
+  left: 50%;
+  width: 572px;
+  height: 352px;
+  transform: translate(-50%, -50%);
+}*/
+.name{
+  position: relative; top: -30px; right: -180px;
+  height: 100px;
+  width: 250px;
+}
+.Hi{
+  font-size: 15px;
+  font-weight: bold;
+  color: rgb(255, 145, 0);
+  font: lighter;
+  position: relative; right: -210px; top: 243px;
+}
+.Shu{
+  font-size: 38px;
+  font-weight: bold;
+  font-family: sans-serif;
+  position: relative; right: -200px; top: 200px; 
+  animation: lef_to_righ 2s ease;
+}
+@keyframes lef_to_righ {
+  from{
+  margin-left: -100%
+}
+  to{
+    margin-left: 0;
+  }
+}
+.Sa{
+  font-size: 80px;
+  font-weight: bold;
+  font-family: sans-serif;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  position: relative; right: -200px; top: 95px; 
+  color: rgb(255, 145, 0);
+  animation: righ_to_lef 2s ease;
+}
+@keyframes righ_to_lef {
+  from{
+  margin-left: 100%
+}
+  to{
+    margin-left: 0;
+  }
+}
+.cse{
+  font-size: 15px;
+  font-weight: bold;
+  color: rgb(206, 205, 195);
+  font: lighter;
+  position: relative; right: -300px; top: 0px;
+}
+.des{
+  font-size: 15px;
+  font-weight: bold;
+  color: rgb(206, 203, 195);
+  font: lighter;
+  position: relative; right: -200px; top: 0px;
+  text-align: right;
+}
+ /* .social-menu ul {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 0;
+  margin: 0;
+  display: flex;
+  }
+  .social-menu ul li {
+  list-style: none;
+  margin: 0 10px;
+  }
+  .social-menu ul li .fa {
+  color: #000000;
+  font-size: 25px;
+  line-height: 50px;
+  transition: .5s;
+  }
+  .social-menu ul li .fa:hover {
+  color: #ffffff;
+  }
+  .social-menu ul li a {
+  position: relative;
+  display: block;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: white;
+  text-align: center;
+  } */
+  .socialmedia{
+    width: 200px;
+    position: relative; left: 650px; top: 50px;
+  }
+    .Facebook, .Twitter, .LinkedIn, .Instagram, .YouTube{
+    height:26px;
+    width:26px;
+    }
+.copy{
+  font-family: Verdana;
+  font-size: 10px;
+  width: 250px;
+  position: relative; top: 50px; left: 600px;
+}
+
+
+
+
+/* ABOUT */
+
+.abpic1{
+  width: 500px;
+  height: 500px;
+  position: relative; left: 480px;
+  animation: fade 3s ease-in;
+}
+@keyframes fade{
+  from{
+    opacity: 0;
+  }
+  to{
+    opacity: 100%;
+  }
+}
+.ab{
+  width: 300px;
+}
+.nam11{
+  overflow: hidden;
+  border-right: .15em rgb(255, 145, 0);
+  white-space: nowrap;
+  margin: 0 auto;
+  font-size: 30px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-weight: bold;
+  position: relative; left: 600px;
+  animation: typing 2.5s steps(40, end), blink-caret .75s step-end infinite;
+}
+@keyframes typing {
+  from{
+  width: 0;
+}
+  to{
+  width: 100%;
+  }
+}
+@keyframes blink-caret {
+  from, to { border-color: transparent;}
+  50% { border-color: rgb(255, 145, 0);}
+}
+.info{
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  text-align: center;
+  position: relative; left: 80px; top: 30px;
+}
+.go{
+  font-size: 20px;
+  font-weight: bolder;
+  color: rgb(255, 145, 0);
+}
+.godes{
+  animation: btod 3s ease;
+}
+@keyframes btod{
+  from{
+    margin-left: -100%;
+  }
+  to{
+    margin-left: 0;
+  }
+}
+.sta{
+  font-size: 20px;
+  font-weight: bolder;
+  color: rgb(255, 145, 0);
+}
+.stades{
+  animation: dtob 3s ease;
+}
+@keyframes dtob{
+  from{
+    margin-left: 100%;
+  }
+  to{
+    margin-left: 0;
+  }
+}
+.ski{
+  font-size: 20px;
+  font-weight: bolder;
+  color: rgb(255, 145, 0);
+}
+.skills{
+  font-weight: bold;
+  width: 500px;
+  height: 200px;
+  position: relative; top: 100px; right: -430px;
+  animation: ntou 3s ease;
+}
+@keyframes ntou{
+  from{
+    margin-left: -100%;
+  }
+  to{
+    margin-left: 0;
+  }
+}
+.leftskills{
+  z-index: 4;
+  color: #d40000;
+  position: relative;
+}
+.middleskills{
+  z-index: 3;
+  color: #d40000;
+  height: 60px;
+  position: relative; left: 200px; top: -115px;
+}
+.rightskills{
+  z-index: 2;
+  color: #d40000;
+  height: 60px;
+  position: relative; left: 450px; top: -190px;
+}
+.ov{
+  height: 100px;
+}
+.ov1{
+  z-index: 1;
+  width: 750px;
+  position: relative; left: 370px; top: -180px;
+  animation: ovhide 3s ease;
+}
+@keyframes ovhide{
+  from{
+    margin-left: -100px;
+  }
+  to{
+    margin-left: 0;
+  }
+}
+
+
+
+/*PROJECTS*/
+
+.bulb{
+  width: 200px;
+  position: relative; left: 625px;
+  animation: uton2 3s ease-in;
+}
+@keyframes uton2{
+  from{
+    opacity: 0;
+  }
+  to{
+    opacity: 100%;
+  }
+}
+.ph1{
+  color: #d40000;
+  width: 400px;
+  font-size: 40px;
+  font-weight: bold;
+  position: relative; right: -560px; top: -50px;
+  animation: uton 3s ease-in;
+}
+@keyframes uton{
+  from{
+    opacity: 0;
+  }
+  to{
+    opacity: 100%;
+  }
+}
+.str1{
+  z-index: 2;
+  display: block;
+  width: 500px;
+  position: relative; left: 460px; top: 100px;
+}
+.str2{
+  z-index: 1;
+  display: flex;
+  width: 1000px;
+  position: relative; left: 250px; top: -600px;
+}
+.cap{
+  color: rgb(255, 145, 0);
+  z-index: 3;
+  font-weight: bold;
+  text-align: center;
+  font-size: 20px;
+  position: relative; top: -1000px; right: -70px;
+}
+.portdes{
+  position: relative; top: -800px; right: -80px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  text-align: center;
+}
+.prodes{
+  height: 1000px;
+}
+
+
+
+
+
+/* BLOGS */
+
+.bpic1{
+  width: 400px;
+  position: relative; right: -520px; top: -50px;
+}
+.butpic{
+  width: 600px;
+  position: relative; right: -420px; top: -50px;
+}
+.butdes, .flydes, .ndes{
+  position: relative; right: -100px;
+}
+.butbut, .butfly, .butna{
+  background-color: black;
+  color:rgb(255, 145, 0);
+  position: relative; right: -100px;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 15px;
+}
+.butaud{
+  z-index: 2;
+  opacity: 1%;
+  position: relative; top: -290px; right: -100px;
+}
+.butbr, .flybr{
+  font-style: italic; font-size: 14px; text-align: center;
+  position: relative; right: -75px;
+  color: #d40000;
+}
+.mrape{
+  height: 1000px;
+  position: relative; top: 100px;
+}
+.mrapepic{
+  z-index: 1;
+  width: 600px;
+  position: relative; right: -435px; top: 50px;
+}
+.flydes{
+  position: relative; top: 150px;
+}
+.butfly{
+  color: rgb(13, 119, 180);
+  position: relative; top: 150px;
+}
+.flyaud{
+  z-index: 2;
+  opacity: 1%;
+  position: relative; right: -245px; top: -215px;
+}
+.flybr{
+  position: relative; top: 120px;
+}
+.last{
+  height: 1000px;
+}
+.nvdo{
+  width: 50%;
+  position: relative; right: -400px; top: 170px;
+  border-radius: 30px;
+}
+.ndes{
+  position: relative; top: 250px;
+}
+.butna{
+  color: rgb(223, 102, 4);
+  position: relative; top: 250px;
+}
+
+
+
+
+/* CONTACTS */
+
+.cpic1{
+  width: 400px;
+  position: relative; right: -520px;
+  animation: uptoni 1s ease;
+}
+@keyframes uptoni{
+  from{
+    margin-top: -100%;
+  }
+  to{
+    margin-top: 0;
+  }
+}
+
+.conpic{
+  height: 220px;
+}
+
+.form{
+  height: 540px;
+  width: 650px;
+  border-radius: 5px;
+  background-color: rgb(26, 26, 23);
+  padding: 20px;
+  position: relative; left: 400px;
+  animation: nitoup 3s ease;
+}
+@keyframes nitoup{
+  from{
+    margin-top: 100%;
+  }
+  to{
+    margin-top: 0;
+  }
+}
+
+input[type=text], #email, textarea{
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+input[type=submit] {
+  background-color: rgb(107, 12, 12);
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: rgb(34, 2, 2);
+}
+
+.footp{
+  width: 300px;
+  position: relative; right: -600px; top: 100px;
+}
+
+.foot{
+  height: 300px;
+}
+
+
+
+
+
+
